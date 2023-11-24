@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class VenueFlashMessage extends Model
+{
+    use HasFactory;
+
+    protected $table = 'venue_flash_message';
+
+    protected $fillable = [
+        'sender_id',
+        'reciever_id',
+        'message',
+        'message_from'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'sender_id', 'reciever_id');
+    }
+}
